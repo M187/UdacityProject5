@@ -1,9 +1,14 @@
-<com.example.xyzreader.ui.DrawInsetsFrameLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/draw_insets_frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+<com.example.xyzreader.ui.DrawInsetsFrameLayout
+    android:id="@+id/draw_insets_frame_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <com.example.xyzreader.ui.ObservableScrollView
         android:id="@+id/scrollview"
@@ -29,7 +34,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="112dp"
-                    android:background="@drawable/photo_background_protection" />
+                    android:background="?attr/colorPrimary"
+                    android:alpha="1"/>
 
             </FrameLayout>
 
@@ -106,3 +112,4 @@
         android:contentDescription="@string/action_share" />
 
 </com.example.xyzreader.ui.DrawInsetsFrameLayout>
+</android.support.v4.widget.NestedScrollView>
