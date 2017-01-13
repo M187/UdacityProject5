@@ -3,16 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/toolbar_max_height"
         android:background="?colorPrimary">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/up_container"
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="match_parent"
             app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
             app:expandedTitleMarginStart="72dp"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
@@ -25,7 +31,7 @@
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:contentInsetStart="72dp"
                 app:layout_collapseMode="pin"
-                app:navigationIcon="@drawable/logo" >
+                app:navigationIcon="@drawable/logo">
 
             <ImageButton
                 android:id="@+id/action_up"
@@ -39,13 +45,6 @@
                 android:src="@drawable/ic_arrow_back"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
             </android.support.v7.widget.Toolbar>
-
         </android.support.design.widget.CollapsingToolbarLayout>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
     </android.support.design.widget.AppBarLayout>
 </android.support.design.widget.CoordinatorLayout>

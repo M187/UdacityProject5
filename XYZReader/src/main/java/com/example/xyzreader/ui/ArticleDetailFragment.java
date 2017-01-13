@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ShareCompat;
@@ -149,6 +148,8 @@ public class ArticleDetailFragment extends Fragment implements
             float f = progress(mScrollY,
                     mStatusBarFullOpacityBottom - mTopInset * 3,
                     mStatusBarFullOpacityBottom - mTopInset);
+
+            // Color of background behind text.
             color = Color.argb((int) (255 * f),
                     (int) (Color.red(mMutedColor) * 0.9),
                     (int) (Color.green(mMutedColor) * 0.9),
