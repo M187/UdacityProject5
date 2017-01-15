@@ -26,4 +26,18 @@
     <color name="primary_dark_material_light">#370e0e</color>
     <color name="primary_text_material_light">#000000</color>
     <color name="primary_text_material_dark">#ffffff</color>
+
+
+    <!-- colors RED-AMBER -->
+    <color name="primary">#F44336</color>
+    <color name="primary_dark">#D32F2F</color>
+    <color name="primary_light">#FFCDD2</color>
+    <color name="accent">#FFC107</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
+
+
 </resources>
