@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.xyzreader.ui.singlepane.HeaderView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
+    android:background="#333"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/detail_metabar_vert_padding"
+    android:paddingLeft="@dimen/detail_inner_horiz_margin"
+    android:paddingRight="@dimen/detail_inner_horiz_margin"
+    android:paddingTop="@dimen/detail_metabar_vert_padding"
+    android:alpha="1">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/article_title_toolbar"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:lineSpacingMultiplier="0.9"
+        android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
+        android:textColor="#fff"
+        android:textSize="@dimen/detail_title_text_size"
+        android:textStyle="bold"
+        />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/article_byline_toolbar"
+        style="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#8fff"
+        />
+
+</com.example.xyzreader.ui.singlepane.HeaderView>
