@@ -20,7 +20,7 @@
     <style name="MyStyle" parent="@style/Theme.AppCompat.Light.NoActionBar">
 
         <!-- colorPrimary is used for the default action bar background -->
-        <item name="colorPrimary">#D32F2F</item>
+        <item name="colorPrimary">#000</item>
 
         <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">#4f1515</item>

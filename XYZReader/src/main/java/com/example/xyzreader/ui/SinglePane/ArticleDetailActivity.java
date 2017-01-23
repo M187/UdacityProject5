@@ -57,6 +57,9 @@ public class ArticleDetailActivity extends AppCompatActivity
     @Bind(R.id.toolbar_header_view)
     HeaderView toolbarHeaderView;
 
+    private FadingImageViewHandler fadingImageViewHandler;
+
+
     private ArticleDetailFragmentSingle[] fragments = new ArticleDetailFragmentSingle[]{};
 
     @Override
@@ -72,6 +75,7 @@ public class ArticleDetailActivity extends AppCompatActivity
 
         getLoaderManager().initLoader(0, null, this);
 
+        fadingImageViewHandler = new FadingImageViewHandler(this.mPhotoView);
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageMargin((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
@@ -171,13 +175,14 @@ public class ArticleDetailActivity extends AppCompatActivity
         float percentage = (float) Math.abs(verticalOffset) / (float) maxScroll;
 
         if (percentage == 1f) {
-            mPhotoView.setVisibility(View.INVISIBLE);
             mFabButton.hide();
         } else if (percentage < 1f) {
-            mPhotoView.setVisibility(View.VISIBLE);
             mFabButton.show();
         }
+        fadingImageViewHandler.handleScrolling(percentage);
     }
+
+
 
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
