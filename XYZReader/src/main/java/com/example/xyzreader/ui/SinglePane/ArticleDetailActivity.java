@@ -83,7 +83,7 @@ public class ArticleDetailActivity extends AppCompatActivity
                 super.onPageScrollStateChanged(state);
                 mUpButton.animate()
                         .alpha((state == ViewPager.SCROLL_STATE_IDLE) ? 1f : 0f)
-                        .setDuration(300);
+                        .setDuration(500);
             }
 
             @Override

@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
@@ -34,19 +33,17 @@
             android:id="@+id/up_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
-            app:expandedTitleMarginStart="72dp"
-            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
                 android:id="@+id/photo_toolbar"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                app:layout_collapseMode="parallax" />
+
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -59,13 +56,6 @@
                 app:contentInsetStart="72dp"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/logo">
-
-                <!--<include-->
-                    <!--android:id="@+id/toolbar_header_view"-->
-                    <!--layout="@layout/header_view"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:visibility="gone" />-->
 
                 <ImageButton
                     android:id="@+id/action_up"
@@ -83,13 +73,12 @@
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 
+        <include
+            android:id="@+id/toolbar_header_view"
+            layout="@layout/header_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="com.example.xyzreader.ui.SinglePane.TitleBehavior" />
 
-    <include
-        android:id="@+id/toolbar_header_view"
-        layout="@layout/header_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="com.example.xyzreader.ui.SinglePane.TitleBehavior"
-        />
     </android.support.design.widget.AppBarLayout>
 </android.support.design.widget.CoordinatorLayout>
