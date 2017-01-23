@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.view.ViewPager;
@@ -48,13 +49,13 @@ public class ArticleDetailActivity extends AppCompatActivity
     View mUpButton;
     @Bind(R.id.photo_toolbar)
     ImageView mPhotoView;
+    @Bind(R.id.share_fab)
+    FloatingActionButton mFabButton;
 
     @Bind(R.id.toolbar_container)
     AppBarLayout appBarLayout;
     @Bind(R.id.toolbar_header_view)
     HeaderView toolbarHeaderView;
-
-    private boolean isHideToolbarView = false;
 
     private ArticleDetailFragmentSingle[] fragments = new ArticleDetailFragmentSingle[]{};
 
@@ -164,6 +165,20 @@ public class ArticleDetailActivity extends AppCompatActivity
         mPagerAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        int maxScroll = appBarLayout.getTotalScrollRange();
+        float percentage = (float) Math.abs(verticalOffset) / (float) maxScroll;
+
+        if (percentage == 1f) {
+            mPhotoView.setVisibility(View.INVISIBLE);
+            mFabButton.hide();
+        } else if (percentage < 1f) {
+            mPhotoView.setVisibility(View.VISIBLE);
+            mFabButton.show();
+        }
+    }
+
     private class MyPagerAdapter extends FragmentStatePagerAdapter {
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -205,21 +220,5 @@ public class ArticleDetailActivity extends AppCompatActivity
 
     public void resetView(ImageView imageView) {
         imageView.setImageBitmap(null);
-    }
-
-    @Override
-    public void onOffsetChanged(AppBarLayout appBarLayout, int offset) {
-
-        int maxScroll = appBarLayout.getTotalScrollRange();
-        float percentage = (float) Math.abs(offset) / (float) maxScroll;
-
-        if (percentage == 1f && isHideToolbarView) {
-            toolbarHeaderView.setVisibility(View.VISIBLE);
-            isHideToolbarView = !isHideToolbarView;
-
-        } else if (percentage < 1f && !isHideToolbarView) {
-            toolbarHeaderView.setVisibility(View.GONE);
-            isHideToolbarView = !isHideToolbarView;
-        }
     }
 }
