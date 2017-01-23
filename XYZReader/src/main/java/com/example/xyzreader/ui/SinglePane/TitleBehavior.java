@@ -40,6 +40,7 @@ public class TitleBehavior extends CoordinatorLayout.Behavior<HeaderView> {
         int maxScroll = ((AppBarLayout) dependency).getTotalScrollRange();
         float percentage = Math.abs(dependency.getY()) / (float) maxScroll;
 
+        //todo
         float childPosition = dependency.getHeight()
                 + dependency.getY()
                 - child.getHeight()

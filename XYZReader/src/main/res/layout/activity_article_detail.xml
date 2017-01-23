@@ -83,7 +83,7 @@
                     app:layout_collapseMode="pin" />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+
 
     <include
         android:id="@+id/toolbar_header_view"
@@ -92,5 +92,5 @@
         android:layout_height="wrap_content"
         app:layout_behavior="com.example.xyzreader.ui.SinglePane.TitleBehavior"
         />
-
+    </android.support.design.widget.AppBarLayout>
 </android.support.design.widget.CoordinatorLayout>

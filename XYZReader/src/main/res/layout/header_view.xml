@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.example.xyzreader.ui.singlepane.HeaderView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="top"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
-    android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
+    android:layout_marginTop="?actionBarSize"
     android:background="#333"
     android:orientation="vertical"
     android:paddingBottom="@dimen/detail_metabar_vert_padding"

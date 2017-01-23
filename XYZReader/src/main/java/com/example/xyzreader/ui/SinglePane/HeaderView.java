@@ -39,7 +39,6 @@ public class HeaderView extends LinearLayout{
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();

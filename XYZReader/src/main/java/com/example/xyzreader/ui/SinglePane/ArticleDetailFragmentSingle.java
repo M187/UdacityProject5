@@ -9,7 +9,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,6 @@ import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.ui.ArticleListActivity;
 import com.example.xyzreader.ui.DrawInsetsFrameLayout;
-import com.example.xyzreader.ui.ObservableScrollView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,26 +34,20 @@ public class ArticleDetailFragmentSingle extends Fragment implements
     private static final String TAG = "ArticleDetailFragment";
 
     public static final String ARG_ITEM_ID = "item_id";
-    private static final float PARALLAX_FACTOR = 1.25f;
 
     private Cursor mCursor;
     private long mItemId;
     private View mRootView;
     private static int mMutedColor = 0xFF333333;
-    private ObservableScrollView mScrollView;
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
 
     private int mTopInset;
-    @Bind(R.id.photo_container)
-    View mPhotoContainerView;
     @Bind(R.id.photo_toolbar)
     ImageView mPhotoView;
     private int mScrollY;
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
-
-    public String articleName;
 
 
     /**
@@ -96,7 +88,7 @@ public class ArticleDetailFragmentSingle extends Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ButterKnife.bind(getActivity());
-        mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_article_detail_single, container, false);
         mDrawInsetsFrameLayout = (DrawInsetsFrameLayout)
                 mRootView.findViewById(R.id.draw_insets_frame_layout);
         mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
@@ -105,10 +97,6 @@ public class ArticleDetailFragmentSingle extends Fragment implements
                 mTopInset = insets.top;
             }
         });
-
-        mPhotoView = (ImageView) getActivity().findViewById(R.id.photo_toolbar);
-        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
-
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         bindViews();
@@ -151,31 +139,15 @@ public class ArticleDetailFragmentSingle extends Fragment implements
         if (mRootView == null) {
             return;
         }
-
-        TextView titleView = (TextView) mRootView.findViewById(R.id.article_title);
-        TextView bylineView = (TextView) mRootView.findViewById(R.id.article_byline);
-        bylineView.setMovementMethod(new LinkMovementMethod());
         TextView bodyView = (TextView) mRootView.findViewById(R.id.article_body);
 
         if (mCursor != null) {
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-//            this.articleName = mCursor.getString(ArticleLoader.Query.TITLE);
-//            titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
-//            bylineView.setText(Html.fromHtml(
-//                    DateUtils.getRelativeTimeSpanString(
-//                            mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
-//                            System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
-//                            DateUtils.FORMAT_ABBREV_ALL).toString()
-//                            + " by <font color='#ffffff'>"
-//                            + mCursor.getString(ArticleLoader.Query.AUTHOR)
-//                            + "</font>"));
             bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
         } else {
             mRootView.setVisibility(View.GONE);
-            titleView.setText("N/A");
-            bylineView.setText("N/A");
             bodyView.setText("N/A");
         }
     }
