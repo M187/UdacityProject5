@@ -5,7 +5,6 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.ui.ArticleListActivity;
-import com.example.xyzreader.ui.DrawInsetsFrameLayout;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,7 +37,6 @@ public class ArticleDetailFragmentSingle extends Fragment implements
     private long mItemId;
     private View mRootView;
     private static int mMutedColor = 0xFF333333;
-    private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
 
     private int mTopInset;
@@ -89,14 +86,6 @@ public class ArticleDetailFragmentSingle extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ButterKnife.bind(getActivity());
         mRootView = inflater.inflate(R.layout.fragment_article_detail_single, container, false);
-        mDrawInsetsFrameLayout = (DrawInsetsFrameLayout)
-                mRootView.findViewById(R.id.draw_insets_frame_layout);
-        mDrawInsetsFrameLayout.setOnInsetsCallback(new DrawInsetsFrameLayout.OnInsetsCallback() {
-            @Override
-            public void onInsetsChanged(Rect insets) {
-                mTopInset = insets.top;
-            }
-        });
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         bindViews();
@@ -118,7 +107,6 @@ public class ArticleDetailFragmentSingle extends Fragment implements
                     (int) (Color.blue(mMutedColor) * 0.9));
         }
         mStatusBarColorDrawable.setColor(color);
-        mDrawInsetsFrameLayout.setInsetBackground(mStatusBarColorDrawable);
     }
 
     static float progress(float v, float min, float max) {
